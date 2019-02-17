@@ -7,6 +7,8 @@ import { SharedModule } from '@app/shared';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { QuoteService } from './quote.service';
+import { MatToolbarModule, MatSlideToggleModule, MatButtonModule } from '@angular/material';
+import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
   imports: [
@@ -14,13 +16,13 @@ import { QuoteService } from './quote.service';
     TranslateModule,
     CoreModule,
     SharedModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatSlideToggleModule,
+    OverlayModule
   ],
-  declarations: [
-    HomeComponent
-  ],
-  providers: [
-    QuoteService
-  ]
+  declarations: [HomeComponent],
+  providers: [QuoteService]
 })
-export class HomeModule { }
+export class HomeModule {}

@@ -21,7 +21,6 @@ const credentialsKey = 'credentials';
  */
 @Injectable()
 export class AuthenticationService {
-
   private _credentials: Credentials | null;
 
   constructor() {
@@ -61,7 +60,9 @@ export class AuthenticationService {
    * @return True if the user is authenticated.
    */
   isAuthenticated(): boolean {
-    return !!this.credentials;
+    //TODO: Now Making this true as we dont have any login Page for Us!
+    //return !!this.credentials;
+    return true;
   }
 
   /**
@@ -90,5 +91,4 @@ export class AuthenticationService {
       localStorage.removeItem(credentialsKey);
     }
   }
-
 }

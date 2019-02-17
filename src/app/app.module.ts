@@ -15,6 +15,8 @@ import { AboutModule } from './about/about.module';
 import { LoginModule } from './login/login.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
+import { MatToolbarModule, MatSlideToggleModule, MatButtonModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -30,11 +32,14 @@ import { AppRoutingModule } from './app-routing.module';
     HomeModule,
     AboutModule,
     LoginModule,
+    MatButtonModule,
+    OverlayModule,
+    MatSlideToggleModule,
+    MatToolbarModule,
     AppRoutingModule // must be imported as the last module as it contains the fallback route
   ],
   declarations: [AppComponent],
-  providers: [
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
