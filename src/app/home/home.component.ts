@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, Input } from '@angular/core';
 import { finalize } from 'rxjs/operators';
 
 import { QuoteService } from './quote.service';
@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
   quote: string;
   isLoading: boolean;
   isDarkTheme: Observable<boolean>;
+  themeString: string;
+  optionString: string;
 
   constructor(
     private quoteService: QuoteService,
@@ -26,7 +28,7 @@ export class HomeComponent implements OnInit {
     this.isLoading = true;
     //Theme
     this.isDarkTheme = this.themeService.isDarkTheme;
-
+    //this.optionString = "{tweetLimit: 5}" + "theme:{'" + this.themeString + "'}";
     this.quoteService
       .getRandomQuote({ category: 'dev' })
       .pipe(
@@ -41,5 +43,12 @@ export class HomeComponent implements OnInit {
 
   toggleDarkTheme(checked: boolean) {
     this.themeService.setDarkTheme(checked);
+    if (this.isDarkTheme) {
+      this.themeString = 'dark';
+      this.optionString = "{tweetLimit: 5,theme:'" + this.themeString + "'}";
+    } else {
+      this.themeString = 'light';
+      this.optionString = "{tweetLimit: 5,theme:'" + this.themeString + "'}";
+    }
   }
 }

@@ -1,17 +1,16 @@
 <div [ngClass]="{ 'dark-theme': isDarkTheme | async }">
-  <div class="container-fluid">
-    <div class="jumbotron text-center">
-      <div class="mat-app-background">
-        <h1>
-          <img class="logo" src="assets/ngx-rocket-logo.png" alt="angular logo" />
-          <span translate>Hello world !</span>
-        </h1>
-        <mat-slide-toggle [checked]="isDarkTheme | async" (change)="toggleDarkTheme($event.checked)"
-          >Dark theme</mat-slide-toggle
-        >
-        <app-loader [isLoading]="isLoading"></app-loader>
-        <q [hidden]="isLoading">{{ quote }}</q>
-      </div>
-    </div>
+  <div class="container-fluid mat-app-background jumbotron text-center">
+    <h3>
+      <img class="logo" src="assets/icon.png" alt="logo" />
+      <span>Muralidharan Nandakumar</span>
+    </h3>
+    <mat-slide-toggle [checked]="isDarkTheme | async" (change)="toggleDarkTheme($event.checked)"></mat-slide-toggle>
+    <app-loader [isLoading]="isLoading"></app-loader>
+    <!-- <q [hidden]="isLoading">{{ quote }}</q> -->
+    <ngx-twitter-timeline
+      class="text-center"
+      [data]="{ sourceType: 'url', url: 'https://twitter.com/muralidharan10' }"
+      [opts]="optionString"
+    ></ngx-twitter-timeline>
   </div>
 </div>

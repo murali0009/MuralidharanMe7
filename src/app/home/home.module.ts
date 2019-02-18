@@ -9,6 +9,8 @@ import { HomeComponent } from './home.component';
 import { QuoteService } from './quote.service';
 import { MatToolbarModule, MatSlideToggleModule, MatButtonModule } from '@angular/material';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
+// Import ngx-twitter-timeline
+import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
 
 @NgModule({
   imports: [
@@ -20,7 +22,8 @@ import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
     MatButtonModule,
     MatToolbarModule,
     MatSlideToggleModule,
-    OverlayModule
+    OverlayModule,
+    NgxTwitterTimelineModule
   ],
   declarations: [HomeComponent],
   providers: [QuoteService]
