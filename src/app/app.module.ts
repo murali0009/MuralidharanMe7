@@ -16,7 +16,10 @@ import { LoginModule } from './login/login.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
-import { MatToolbarModule, MatSlideToggleModule, MatButtonModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   imports: [
@@ -33,6 +36,7 @@ import { MatToolbarModule, MatSlideToggleModule, MatButtonModule } from '@angula
     AboutModule,
     LoginModule,
     MatButtonModule,
+    MatCardModule,
     OverlayModule,
     MatSlideToggleModule,
     MatToolbarModule,

@@ -7,10 +7,15 @@
     <mat-slide-toggle [checked]="isDarkTheme | async" (change)="toggleDarkTheme($event.checked)"></mat-slide-toggle>
     <app-loader [isLoading]="isLoading"></app-loader>
     <!-- <q [hidden]="isLoading">{{ quote }}</q> -->
-    <ngx-twitter-timeline
-      class="text-center"
-      [data]="{ sourceType: 'url', url: 'https://twitter.com/muralidharan10' }"
-      [opts]="optionString"
-    ></ngx-twitter-timeline>
+    <div [ngClass]="{ 'dark-theme': isDarkTheme | async }">
+      <a
+        [ngClass]="{ 'dark-theme': isDarkTheme | async }"
+        data-width="300"
+        data-height="300"
+        class="twitter-timeline"
+        href="https://twitter.com/TwitterDev"
+        >Tweets by TwitterDev</a
+      >
+    </div>
   </div>
 </div>
