@@ -1,7 +1,6 @@
 import { Component, OnInit, HostBinding, Input, Output, AfterViewInit } from '@angular/core';
 import { finalize } from 'rxjs/operators';
 
-import { QuoteService } from './quote.service';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Observable } from 'rxjs';
 import { ThemeService } from '@app/core/theme.sevice';
@@ -52,11 +51,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
   ];
 
-  constructor(
-    private quoteService: QuoteService,
-    public overlayContainer: OverlayContainer,
-    private themeService: ThemeService
-  ) {}
+  constructor(public overlayContainer: OverlayContainer, private themeService: ThemeService) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -64,16 +59,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.isDarkTheme = this.themeService.isDarkTheme;
     this.themeString = 'dark';
     this.optionString = [{ tweetLimit: 5, theme: 'dark' }];
-    this.quoteService
-      .getRandomQuote({ category: 'dev' })
-      .pipe(
-        finalize(() => {
-          this.isLoading = false;
-        })
-      )
-      .subscribe((quote: string) => {
-        this.quote = quote;
-      });
   }
 
   toggleDarkTheme(checked: boolean) {
