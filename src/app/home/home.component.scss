@@ -7,3 +7,19 @@ q {
   font-size: 1.2rem;
   quotes: "« " " »";
 }
+
+@keyframes hideshow {
+  0% {
+    opacity: 1;
+  }
+  35% {
+    opacity: 0;
+  }
+  95% {
+    opacity: 1;
+  }
+}
+
+#svg {
+  animation: hideshow 5s ease alternate infinite;
+}
