@@ -5,7 +5,6 @@
       <span>Muralidharan Nandakumar</span>
     </h3>
     <mat-slide-toggle [checked]="isDarkTheme | async" (change)="toggleDarkTheme($event.checked)"></mat-slide-toggle>
-    <app-loader [isLoading]="isLoading"></app-loader>
     <!-- <q [hidden]="isLoading">{{ quote }}</q> -->
     <div [ngClass]="{ 'dark-theme': isDarkTheme | async }">
       <a

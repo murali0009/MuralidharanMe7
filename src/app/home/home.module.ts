@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { CoreModule } from '@app/core';
-import { SharedModule } from '@app/shared';
+import { FormsModule } from '@angular/forms';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,9 +16,9 @@ import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     TranslateModule,
     CoreModule,
-    SharedModule,
     HomeRoutingModule,
     MatButtonModule,
     MatToolbarModule,

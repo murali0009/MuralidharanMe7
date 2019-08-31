@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<testsuite name="HeadlessChrome 77.0.3835 (Mac OS X 10.14.6)" package="" timestamp="2019-08-31T01:09:22" id="0" hostname="MuralidaransMBP" tests="40" errors="0" failures="1" time="0.632">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/77.0.3835.0 Safari/537.36"/>
+  </properties>
+  <testcase name="AboutComponent should create" time="0.049" classname="AboutComponent"/>
+  <testcase name="AppComponent should create the app" time="0.026" classname="AppComponent"/>
+  <testcase name="ApiPrefixInterceptor should prepend environment.serverUrl to the request url" time="0.009" classname="ApiPrefixInterceptor"/>
+  <testcase name="ApiPrefixInterceptor should not prepend environment.serverUrl to request url" time="0.006" classname="ApiPrefixInterceptor"/>
+  <testcase name="CacheInterceptor with default configuration should cache the request" time="0.008" classname="CacheInterceptor"/>
+  <testcase name="CacheInterceptor with default configuration should respond from the cache" time="0.006" classname="CacheInterceptor"/>
+  <testcase name="CacheInterceptor with default configuration should not cache the request in case of error" time="0.005" classname="CacheInterceptor"/>
+  <testcase name="CacheInterceptor with update forced configuration should force cache update" time="0.004" classname="CacheInterceptor"/>
+  <testcase name="ErrorHandlerInterceptor should catch error and call error handler" time="0.006" classname="ErrorHandlerInterceptor"/>
+  <testcase name="HttpCacheService setCacheData should set cache data" time="0.005" classname="HttpCacheService"/>
+  <testcase name="HttpCacheService setCacheData should replace existing data" time="0.008" classname="HttpCacheService"/>
+  <testcase name="HttpCacheService setCacheData should set cache date correctly" time="0.005" classname="HttpCacheService"/>
+  <testcase name="HttpCacheService getCacheData should return null if no cache" time="0.005" classname="HttpCacheService"/>
+  <testcase name="HttpCacheService getCacheData should return cached data if exists" time="0.005" classname="HttpCacheService"/>
+  <testcase name="HttpCacheService getCacheData should return cached data with url parameters if exists" time="0.004" classname="HttpCacheService"/>
+  <testcase name="HttpCacheService getHttpCacheEntry should return null if no cache" time="0.004" classname="HttpCacheService"/>
+  <testcase name="HttpCacheService getHttpCacheEntry should return cached data date  if exists" time="0.005" classname="HttpCacheService"/>
+  <testcase name="HttpCacheService clearCacheData should clear existing cache data" time="0.007" classname="HttpCacheService"/>
+  <testcase name="HttpCacheService clearCacheData should do nothing if no cache exists" time="0.005" classname="HttpCacheService"/>
+  <testcase name="HttpCacheService cleanCache should clear all cache if no date is specified" time="0.004" classname="HttpCacheService"/>
+  <testcase name="HttpCacheService cleanCache should clear existing since specified date" time="0.004" classname="HttpCacheService"/>
+  <testcase name="HttpCacheService cleanCache should not affect cache entries newer than specified date" time="0.004" classname="HttpCacheService"/>
+  <testcase name="HttpCacheService setPersistence should clear previous cache data when persistence value change" time="0.005" classname="HttpCacheService"/>
+  <testcase name="HttpCacheService setPersistence should persist cache to local storage" time="0.004" classname="HttpCacheService"/>
+  <testcase name="HttpCacheService setPersistence should persist cache to session storage" time="0.006" classname="HttpCacheService"/>
+  <testcase name="I18nService extract should not modify string" time="0.005" classname="I18nService"/>
+  <testcase name="I18nService init should init with default language" time="0.005" classname="I18nService"/>
+  <testcase name="I18nService init should init with save language" time="0.004" classname="I18nService"/>
+  <testcase name="I18nService set language should change current language" time="0.004" classname="I18nService"/>
+  <testcase name="I18nService set language should change current language without a region match" time="0.004" classname="I18nService"/>
+  <testcase name="I18nService set language should change current language to default if unsupported" time="0.005" classname="I18nService"/>
+  <testcase name="I18nService get language should return current language" time="0.003" classname="I18nService"/>
+  <testcase name="Logger should create an instance" time="0" classname="Logger"/>
+  <testcase name="Logger should add a new LogOutput and receives log entries" time="0.001" classname="Logger"/>
+  <testcase name="Logger should add a new LogOutput and receives only production log entries" time="0" classname="Logger"/>
+  <testcase name="HomeComponent should create" time="0.132" classname="HomeComponent">
+    <failure type="">Can't bind to 'checked' since it isn't a known property of 'mat-slide-toggle'.
+1. If 'mat-slide-toggle' is an Angular component and it has 'checked' input, then verify that it is part of this module.
+2. If 'mat-slide-toggle' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
+      &lt;span&gt;Muralidharan Nandakumar&lt;/span&gt;
+    &lt;/h3&gt;
+    &lt;mat-slide-toggle [ERROR -&gt;][checked]="isDarkTheme | async" (change)="toggleDarkTheme($event.checked)"&gt;&lt;/mat-slide-toggle&gt;
+    &lt;!"): ng:///DynamicTestModule/HomeComponent.html@6:22
+'mat-slide-toggle' is not a known element:
+1. If 'mat-slide-toggle' is an Angular component, then verify that it is part of this module.
+2. If 'mat-slide-toggle' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+      &lt;span&gt;Muralidharan Nandakumar&lt;/span&gt;
+    &lt;/h3&gt;
+    [ERROR -&gt;]&lt;mat-slide-toggle [checked]="isDarkTheme | async" (change)="toggleDarkTheme($event.checked)"&gt;&lt;/mat-sl"): ng:///DynamicTestModule/HomeComponent.html@6:4
+Error: Template parse errors:
+    at syntaxError (http://localhost:9876/node_modules/@angular/compiler/fesm2015/compiler.js:2175:1)
+    at TemplateParser.parse (http://localhost:9876/node_modules/@angular/compiler/fesm2015/compiler.js:11188:1)
+    at JitCompiler._parseTemplate (http://localhost:9876/node_modules/@angular/compiler/fesm2015/compiler.js:25721:1)
+    at JitCompiler._compileTemplate (http://localhost:9876/node_modules/@angular/compiler/fesm2015/compiler.js:25709:61)
+    at http://localhost:9876/node_modules/@angular/compiler/fesm2015/compiler.js:25653:1
+    at Set.forEach (&lt;anonymous&gt;)
+    at JitCompiler._compileComponents (http://localhost:9876/node_modules/@angular/compiler/fesm2015/compiler.js:25653:1)
+    at http://localhost:9876/node_modules/@angular/compiler/fesm2015/compiler.js:25573:1
+    at Object.then (http://localhost:9876/node_modules/@angular/compiler/fesm2015/compiler.js:2166:27)
+    at JitCompiler._compileModuleAndAllComponents (http://localhost:9876/node_modules/@angular/compiler/fesm2015/compiler.js:25571:1)
+</failure>
+    <failure type="">Error: Template parse errors:
+Can't bind to 'checked' since it isn't a known property of 'mat-slide-toggle'.
+1. If 'mat-slide-toggle' is an Angular component and it has 'checked' input, then verify that it is part of this module.
+2. If 'mat-slide-toggle' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
+      &lt;span&gt;Muralidharan Nandakumar&lt;/span&gt;
+    &lt;/h3&gt;
+    &lt;mat-slide-toggle [ERROR -&gt;][checked]="isDarkTheme | async" (change)="toggleDarkTheme($event.checked)"&gt;&lt;/mat-slide-toggle&gt;
+    &lt;!"): ng:///DynamicTestModule/HomeComponent.html@6:22
+'mat-slide-toggle' is not a known element:
+1. If 'mat-slide-toggle' is an Angular component, then verify that it is part of this module.
+2. If 'mat-slide-toggle' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+      &lt;span&gt;Muralidharan Nandakumar&lt;/span&gt;
+    &lt;/h3&gt;
+    [ERROR -&gt;]&lt;mat-slide-toggle [checked]="isDarkTheme | async" (change)="toggleDarkTheme($event.checked)"&gt;&lt;/mat-sl"): ng:///DynamicTestModule/HomeComponent.html@6:4
+    at syntaxError (http://localhost:9876/node_modules/@angular/compiler/fesm2015/compiler.js:2175:1)
+    at TemplateParser.parse (http://localhost:9876/node_modules/@angular/compiler/fesm2015/compiler.js:11188:1)
+    at JitCompiler._parseTemplate (http://localhost:9876/node_modules/@angular/compiler/fesm2015/compiler.js:25721:1)
+    at JitCompiler._compileTemplate (http://localhost:9876/node_modules/@angular/compiler/fesm2015/compiler.js:25709:61)
+    at http://localhost:9876/node_modules/@angular/compiler/fesm2015/compiler.js:25653:1
+    at Set.forEach (&lt;anonymous&gt;)
+    at JitCompiler._compileComponents (http://localhost:9876/node_modules/@angular/compiler/fesm2015/compiler.js:25653:1)
+    at http://localhost:9876/node_modules/@angular/compiler/fesm2015/compiler.js:25573:1
+    at Object.then (http://localhost:9876/node_modules/@angular/compiler/fesm2015/compiler.js:2166:27)
+    at JitCompiler._compileModuleAndAllComponents (http://localhost:9876/node_modules/@angular/compiler/fesm2015/compiler.js:25571:1)
+</failure>
+    <failure type="">Expected undefined to be truthy.
+    at UserContext.&lt;anonymous&gt; (http://localhost:9876/src/app/home/home.component.spec.ts:25:23)
+    at ZoneDelegate.invoke (http://localhost:9876/node_modules/zone.js/dist/zone-evergreen.js:359:1)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/node_modules/zone.js/dist/zone-testing.js:308:1)
+    at ZoneDelegate.invoke (http://localhost:9876/node_modules/zone.js/dist/zone-evergreen.js:358:1)
+</failure>
+  </testcase>
+  <testcase name="HeaderComponent should create" time="0.153" classname="HeaderComponent"/>
+  <testcase name="ShellComponent should create" time="0.117" classname="ShellComponent"/>
+  <testcase name="ShellModule should create an instance" time="0" classname="ShellModule"/>
+  <testcase name="Shell childRoutes should create routes as children of shell" time="0" classname="Shell"/>
+  <system-out>
+    <![CDATA[
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>
