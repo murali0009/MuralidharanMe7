@@ -12,6 +12,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 // Import ngx-twitter-timeline
 import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
+import { TwitterWidgetComponent } from '@app/twitter-widget/twitter-widget.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,7 @@ import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
     OverlayModule,
     NgxTwitterTimelineModule
   ],
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, TwitterWidgetComponent],
   providers: []
 })
 export class HomeModule {}
