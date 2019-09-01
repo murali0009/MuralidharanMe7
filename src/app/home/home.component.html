@@ -6,6 +6,8 @@
     </h3>
     <mat-slide-toggle [checked]="isDarkTheme | async" (change)="toggleDarkTheme($event.checked)"></mat-slide-toggle>
     <!-- <q [hidden]="isLoading">{{ quote }}</q> -->
-    <app-twitter-widget></app-twitter-widget>
+    <div class="col-md-6">
+      <app-twitter-widget></app-twitter-widget>
+    </div>
   </div>
 </div>

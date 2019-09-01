@@ -9,6 +9,7 @@ import { HomeComponent } from './home.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 // Import ngx-twitter-timeline
 import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
@@ -22,6 +23,7 @@ import { TwitterWidgetComponent } from '@app/twitter-widget/twitter-widget.compo
     CoreModule,
     HomeRoutingModule,
     MatButtonModule,
+    MatCardModule,
     MatToolbarModule,
     MatSlideToggleModule,
     OverlayModule,
