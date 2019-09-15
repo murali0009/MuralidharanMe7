@@ -16,16 +16,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   isDarkTheme: Observable<boolean>;
   themeString: string;
   checked: boolean;
-  optionString: [
-    {
-      tweetLimit?: number;
-      height?: number;
-      borderColor?: string;
-      theme?: string;
-      chrome?: string[];
-      ariaPolite?: string[];
-    }
-  ];
+  myTimeline: any;
 
   constructor(public overlayContainer: OverlayContainer, private themeService: ThemeService) {}
 
@@ -34,8 +25,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.checked = false;
     //Theme
     this.isDarkTheme = this.themeService.isDarkTheme;
-    this.themeString = 'dark';
-    this.optionString = [{ tweetLimit: 5, theme: 'dark' }];
   }
 
   toggleDarkTheme(checked: boolean) {
@@ -44,6 +33,5 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     // @ts-ignore
-    twttr.widgets.load();
   }
 }
