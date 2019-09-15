@@ -1,4 +1,9 @@
 .twitterwidget {
   height: 500px;
+  overflow-y: hidden;
+}
+
+.twitterwidget:hover {
+  height: 500px;
   overflow-y: auto;
 }
