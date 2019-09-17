@@ -12,7 +12,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 // Import ngx-twitter-timeline
-import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
 import { TwitterWidgetComponent } from '@app/twitter-widget/twitter-widget.component';
 
 @NgModule({
@@ -26,8 +25,7 @@ import { TwitterWidgetComponent } from '@app/twitter-widget/twitter-widget.compo
     MatCardModule,
     MatToolbarModule,
     MatSlideToggleModule,
-    OverlayModule,
-    NgxTwitterTimelineModule
+    OverlayModule
   ],
   declarations: [HomeComponent, TwitterWidgetComponent],
   providers: []
