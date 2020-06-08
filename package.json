@@ -6,6 +6,7 @@
     "ng": "ng",
     "build": "ng build --aot --prod",
     "start": "node server.js",
+    "run" :"ng serve",
     "serve:sw": "npm run build -s && npx http-server ./dist -p 4200",
     "lint": "ng lint && stylelint \"src/**/*.scss\" --syntax scss && htmlhint \"src\" --config .htmlhintrc",
     "test": "npm run env -s && ng test",
