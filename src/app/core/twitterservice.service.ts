@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class TwitterService {
-  api_url = 'http://localhost:3000';
+  api_url = 'https://api.muralidharan.me/.netlify/functions/server';
 
   constructor(private http: HttpClient) {}
 
