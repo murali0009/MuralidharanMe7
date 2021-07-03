@@ -10,10 +10,10 @@ from = "http://muralidharan.me/home"
 
 [[Redirects]]
 from = "https://muralidharan.me/home"
-  to = "https://muralidharan.me/"
+  to = "https://muralidharan.me/index.html"
   status = 301
 
 [[Redirects]]
 from = "www.muralidharan.me/home"
-  to = "https://muralidharan.me/"
+  to = "https://muralidharan.me/index.html"
   status = 301
