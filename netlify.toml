@@ -5,7 +5,7 @@ publish = "dist"
 
 [[Redirects]]
 from = "http://muralidharan.me/home"
-  to = "https://muralidharan.me/"
+  to = "https://muralidharan.me/index.html"
   status = 301
 
 [[Redirects]]
