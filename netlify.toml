@@ -1,3 +1,19 @@
 [build]
 command = "npm run-script build"
 publish = "dist"
+
+
+[[Redirects]]
+from = "http://muralidharan.me/home"
+  to = "https://muralidharan.me/"
+  status = 301
+
+[[Redirects]]
+from = "https://muralidharan.me/home"
+  to = "https://muralidharan.me/"
+  status = 301
+
+[[Redirects]]
+from = "www.muralidharan.me/home"
+  to = "https://muralidharan.me/"
+  status = 301
