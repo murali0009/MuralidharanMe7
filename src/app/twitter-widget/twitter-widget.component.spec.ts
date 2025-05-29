@@ -6,11 +6,13 @@ describe('TwitterWidgetComponent', () => {
   let component: TwitterWidgetComponent;
   let fixture: ComponentFixture<TwitterWidgetComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [TwitterWidgetComponent]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [TwitterWidgetComponent]
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TwitterWidgetComponent);

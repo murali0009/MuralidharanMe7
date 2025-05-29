@@ -1,5 +1,5 @@
 import { ActivatedRouteSnapshot, DetachedRouteHandle, RouteReuseStrategy } from '@angular/router';
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
 /**
  * A route strategy allowing for explicit route reuse.

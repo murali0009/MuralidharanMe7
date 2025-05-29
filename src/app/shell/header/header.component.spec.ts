@@ -10,13 +10,15 @@ describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [RouterTestingModule, NgbModule, TranslateModule.forRoot()],
-      declarations: [HeaderComponent],
-      providers: [{ provide: AuthenticationService, useClass: MockAuthenticationService }, I18nService]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule, NgbModule, TranslateModule.forRoot()],
+        declarations: [HeaderComponent],
+        providers: [{ provide: AuthenticationService, useClass: MockAuthenticationService }, I18nService]
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HeaderComponent);
