@@ -115,5 +115,7 @@
       }
     }
   },
-  "defaultProject": "muralidharanme"
+  "cli": {
+    "analytics": "2ddd4261-7bd3-48ad-b78f-126ba7fc938f"
+  }
 }
