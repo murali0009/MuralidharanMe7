@@ -99,7 +99,8 @@ export class HttpCacheService {
    */
   setPersistence(persistence?: 'local' | 'session') {
     this.cleanCache();
-    this.storage = persistence === 'local' || persistence === 'session' ? window[persistence + 'Storage'] : null;
+
+    this.storage = persistence === 'local' || persistence === 'session' ? (window as Window & typeof globalThis)[persistence + 'Storage' as keyof Window] : null;
     this.loadCacheData();
   }
 
