@@ -3,9 +3,10 @@ import { TwitterService } from '@app/core/twitterservice.service';
 import { ThemeService } from '@app/core/theme.sevice';
 
 @Component({
-  selector: 'app-twitter-widget',
-  templateUrl: './twitter-widget.component.html',
-  styleUrls: ['./twitter-widget.component.scss']
+    selector: 'app-twitter-widget',
+    templateUrl: './twitter-widget.component.html',
+    styleUrls: ['./twitter-widget.component.scss'],
+    standalone: false
 })
 export class TwitterWidgetComponent implements OnInit {
   myTimeline: any;
