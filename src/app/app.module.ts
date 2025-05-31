@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -21,27 +21,20 @@ import { TwitterWidgetComponent } from './twitter-widget/twitter-widget.componen
 import { StoreModule, ReducerManager } from '@ngrx/store';
 import { reducer } from './app.reducer';
 
-@NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    TranslateModule.forRoot(),
-    NgbModule,
-    CoreModule,
-    ShellModule,
-    HomeModule,
-    AboutModule,
-    MatButtonModule,
-    MatCardModule,
-    OverlayModule,
-    MatSlideToggleModule,
-    MatToolbarModule,
-    AppRoutingModule, // must be imported as the last module as it contains the fallback route
-    StoreModule.forRoot(reducer)
-  ],
-  declarations: [AppComponent],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [AppComponent],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        FormsModule,
+        TranslateModule.forRoot(),
+        NgbModule,
+        CoreModule,
+        ShellModule,
+        HomeModule,
+        AboutModule,
+        MatButtonModule,
+        MatCardModule,
+        OverlayModule,
+        MatSlideToggleModule,
+        MatToolbarModule,
+        AppRoutingModule, // must be imported as the last module as it contains the fallback route
+        StoreModule.forRoot(reducer)], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {}

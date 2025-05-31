@@ -1,6 +1,6 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouteReusableStrategy } from './route-reusable-strategy';
@@ -14,22 +14,20 @@ import { ErrorHandlerInterceptor } from './http/error-handler.interceptor';
 import { CacheInterceptor } from './http/cache.interceptor';
 import { ThemeService } from './theme.sevice';
 
-@NgModule({
-  imports: [CommonModule, HttpClientModule, TranslateModule, RouterModule],
-  providers: [
-    AuthenticationService,
-    AuthenticationGuard,
-    I18nService,
-    HttpCacheService,
-    ThemeService,
-    ApiPrefixInterceptor,
-    ErrorHandlerInterceptor,
-    {
-      provide: RouteReuseStrategy,
-      useClass: RouteReusableStrategy
-    }
-  ]
-})
+@NgModule({ imports: [CommonModule, TranslateModule, RouterModule], providers: [
+        AuthenticationService,
+        AuthenticationGuard,
+        I18nService,
+        HttpCacheService,
+        ThemeService,
+        ApiPrefixInterceptor,
+        ErrorHandlerInterceptor,
+        {
+            provide: RouteReuseStrategy,
+            useClass: RouteReusableStrategy
+        },
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule, private HttpClient: HttpClient) {
     // Import guard

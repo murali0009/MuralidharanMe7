@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpClient, HttpInterceptor } from '@angular/common/http';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
+import { HttpClient, HttpInterceptor, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { HttpService } from './http.service';
 import { HttpCacheService } from './http-cache.service';
@@ -15,18 +15,20 @@ describe('HttpService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [
+    imports: [],
+    providers: [
         ErrorHandlerInterceptor,
         CacheInterceptor,
         ApiPrefixInterceptor,
         HttpCacheService,
         {
-          provide: HttpClient,
-          useClass: HttpService
-        }
-      ]
-    });
+            provide: HttpClient,
+            useClass: HttpService
+        },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+    ]
+});
   });
 
   beforeEach(inject(
