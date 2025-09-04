@@ -12,17 +12,25 @@ export class TwitterWidgetComponent implements OnInit {
   myTimeline: any;
   pictureDarkUrl: string;
   pictureLightUrl: string;
+  
   constructor(private api: TwitterService, private theme: ThemeService) {}
 
   ngOnInit() {
-    this.getTwitterTimeline();
+    // this.getTwitterTimeline(); // Commented out to avoid API errors during build
     this.pictureDarkUrl = '/assets/Twitter_Logo_Dark.png';
     this.pictureLightUrl = '/assets/Twitter_Logo_Light.png';
   }
+  
   getTwitterTimeline(): void {
-    this.api.getTimeline().subscribe(myTimeline => {
-      this.myTimeline = myTimeline;
-      console.log(this.myTimeline);
+    this.api.getTimeline().subscribe({
+      next: (myTimeline) => {
+        this.myTimeline = myTimeline;
+        console.log(this.myTimeline);
+      },
+      error: (error) => {
+        console.error('Error fetching timeline:', error);
+        this.myTimeline = { data: [] }; // Fallback to empty data
+      }
     });
   }
 }
