@@ -1,36 +1,42 @@
 import { Component, OnInit } from '@angular/core';
 import { TwitterService } from '@app/core/twitterservice.service';
-import { ThemeService } from '@app/core/theme.sevice';
 
 @Component({
-    selector: 'app-twitter-widget',
+    selector: 'app-x-widget',
     templateUrl: './twitter-widget.component.html',
     styleUrls: ['./twitter-widget.component.scss'],
     standalone: false
 })
 export class TwitterWidgetComponent implements OnInit {
   myTimeline: any;
-  pictureDarkUrl: string;
-  pictureLightUrl: string;
+  isLoading: boolean = true;
+  error: string | null = null;
   
-  constructor(private api: TwitterService, private theme: ThemeService) {}
+  constructor(private api: TwitterService) {}
 
   ngOnInit() {
-    // this.getTwitterTimeline(); // Commented out to avoid API errors during build
-    this.pictureDarkUrl = '/assets/Twitter_Logo_Dark.png';
-    this.pictureLightUrl = '/assets/Twitter_Logo_Light.png';
+    this.getXTimeline();
   }
   
-  getTwitterTimeline(): void {
+  getXTimeline(): void {
+    this.isLoading = true;
+    this.error = null;
+    
     this.api.getTimeline().subscribe({
-      next: (myTimeline) => {
-        this.myTimeline = myTimeline;
-        console.log(this.myTimeline);
+      next: (timeline) => {
+        this.myTimeline = timeline;
+        this.isLoading = false;
+        console.log('X Timeline loaded:', this.myTimeline);
       },
       error: (error) => {
-        console.error('Error fetching timeline:', error);
-        this.myTimeline = { data: [] }; // Fallback to empty data
+        this.error = 'Failed to load X timeline';
+        this.isLoading = false;
+        console.error('Error loading X timeline:', error);
       }
     });
+  }
+
+  trackByPostId(_index: number, post: any): string {
+    return post.id;
   }
 }
