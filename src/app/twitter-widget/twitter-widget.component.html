@@ -1,6 +1,6 @@
 <div *ngIf="undefined === myTimeline">Loading...</div>
 <div *ngIf="undefined !== myTimeline">
-  <div [ngClass]="{ 'dark-theme': isDarkTheme | async }">
+  <div>
     <div class="container">
       <!-- <h3 class="col-md-12">
           <img height="20" width="20" [src]="dark-theme ? pictureDarkUrl : pictureLightUrl"/>

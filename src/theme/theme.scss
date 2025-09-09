@@ -1,21 +1,218 @@
-@import "@angular/material/theming";
+@use "@angular/material" as mat;
 
-@include mat-core();
+@include mat.core();
 
-$primary: mat-palette($mat-indigo);
-$accent: mat-palette($mat-pink, A200, A100, A400);
-$warn: mat-palette($mat-red);
-$theme: mat-light-theme($primary, $accent, $warn);
+// Light theme colors
+$primary: mat.m2-define-palette(mat.$m2-indigo-palette);
+$accent: mat.m2-define-palette(mat.$m2-pink-palette, A200, A100, A400);
+$warn: mat.m2-define-palette(mat.$m2-red-palette);
 
-@include angular-material-theme($theme);
+$theme: mat.m2-define-light-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+  ),
+  typography: mat.m2-define-typography-config(),
+  density: 0,
+));
 
-// Our dark theme
+@include mat.all-component-themes($theme);
+
+// Light theme custom styles
+:root {
+  --background-color: #ffffff;
+  --surface-color: #f8f9fa;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --shadow-color: rgba(0, 0, 0, 0.15);
+  --navbar-bg: #343a40;
+  --navbar-text: #ffffff;
+  --card-bg: #ffffff;
+  --jumbotron-bg: #e9ecef;
+}
+
+// Global light theme styles
+body {
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container-fluid,
+.container {
+  background-color: var(--background-color);
+}
+
+.jumbotron {
+  background-color: var(--jumbotron-bg);
+  color: var(--text-primary);
+}
+
+.navbar {
+  background-color: var(--navbar-bg) !important;
+  color: var(--navbar-text);
+  
+  .navbar-brand,
+  .nav-link {
+    color: var(--navbar-text) !important;
+  }
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+  box-shadow: 0 0.125rem 0.25rem var(--shadow-color);
+}
+
+// Dark theme
 .dark-theme {
-  color: $light-primary-text;
-  $dark-primary: mat-palette($mat-yellow);
-  $dark-accent: mat-palette($mat-amber, A400, A100, A700);
-  $dark-warn: mat-palette($mat-red);
-  $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+  $dark-primary: mat.m2-define-palette(mat.$m2-yellow-palette);
+  $dark-accent: mat.m2-define-palette(mat.$m2-amber-palette, A400, A100, A700);
+  $dark-warn: mat.m2-define-palette(mat.$m2-red-palette);
+  
+  $dark-theme: mat.m2-define-dark-theme((
+    color: (
+      primary: $dark-primary,
+      accent: $dark-accent,
+      warn: $dark-warn,
+    ),
+    typography: mat.m2-define-typography-config(),
+    density: 0,
+  ));
 
-  @include angular-material-theme($dark-theme);
+  @include mat.all-component-themes($dark-theme);
+
+  // Dark theme custom variables
+  --background-color: #121212;
+  --surface-color: #1e1e1e;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --border-color: #333333;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --navbar-bg: #1f1f1f;
+  --navbar-text: #ffffff;
+  --card-bg: #1e1e1e;
+  --jumbotron-bg: #2d2d2d;
+
+  // Dark theme specific overrides
+  .mat-app-background {
+    background-color: var(--background-color);
+    color: var(--text-primary);
+  }
+
+  .navbar-dark {
+    background-color: var(--navbar-bg) !important;
+    
+    .navbar-brand,
+    .nav-link,
+    .navbar-nav .nav-link {
+      color: var(--navbar-text) !important;
+      
+      &:hover,
+      &:focus {
+        color: var(--dark-accent) !important;
+      }
+    }
+  }
+
+  .jumbotron {
+    background-color: var(--jumbotron-bg);
+    color: var(--text-primary);
+  }
+
+  .card {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+    
+    .mat-card-content {
+      color: var(--text-primary);
+    }
+  }
+
+  .mat-card {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+  }
+
+  // Text colors
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary);
+  }
+
+  p {
+    color: var(--text-secondary);
+  }
+
+  // Links
+  a {
+    color: var(--dark-primary);
+    
+    &:hover {
+      color: var(--dark-accent);
+    }
+  }
+
+  // Bootstrap button overrides
+  .btn {
+    border-color: var(--border-color);
+  }
+
+  .btn-primary {
+    background-color: var(--dark-primary);
+    border-color: var(--dark-primary);
+  }
+
+  // Form controls
+  .form-control {
+    background-color: var(--surface-color);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+    
+    &:focus {
+      background-color: var(--surface-color);
+      border-color: var(--dark-primary);
+      color: var(--text-primary);
+    }
+  }
+
+  // Dropdown menus
+  .dropdown-menu {
+    background-color: var(--surface-color);
+    border-color: var(--border-color);
+    
+    .dropdown-item {
+      color: var(--text-primary);
+      
+      &:hover,
+      &:focus {
+        background-color: var(--background-color);
+        color: var(--text-primary);
+      }
+    }
+  }
+
+  // Twitter widget specific styling
+  .twitterwidget {
+    .mat-card {
+      margin-bottom: 1rem;
+      
+      .mat-card-content {
+        h3 {
+          color: var(--text-primary);
+        }
+        
+        div {
+          color: var(--text-secondary);
+        }
+        
+        img {
+          border-radius: 50%;
+        }
+      }
+    }
+  }
 }
