@@ -31,6 +31,9 @@ $theme: mat.m2-define-light-theme((
   --navbar-text: #ffffff;
   --card-bg: #ffffff;
   --jumbotron-bg: #e9ecef;
+  --primary-color: #4e8ef7;
+  --tag-background: #f1f8ff;
+  --tag-color: #0366d6;
 }
 
 // Global light theme styles
@@ -96,6 +99,9 @@ body {
   --navbar-text: #ffffff;
   --card-bg: #1e1e1e;
   --jumbotron-bg: #2d2d2d;
+  --primary-color: #ffd700;
+  --tag-background: #2d2d2d;
+  --tag-color: #ffd700;
 
   // Dark theme specific overrides
   .mat-app-background {

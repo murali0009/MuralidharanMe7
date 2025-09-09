@@ -1,28 +1,42 @@
 import { Component, OnInit } from '@angular/core';
 import { TwitterService } from '@app/core/twitterservice.service';
-import { ThemeService } from '@app/core/theme.sevice';
 
 @Component({
-    selector: 'app-twitter-widget',
+    selector: 'app-x-widget',
     templateUrl: './twitter-widget.component.html',
     styleUrls: ['./twitter-widget.component.scss'],
     standalone: false
 })
 export class TwitterWidgetComponent implements OnInit {
   myTimeline: any;
-  pictureDarkUrl: string;
-  pictureLightUrl: string;
-  constructor(private api: TwitterService, private theme: ThemeService) {}
+  isLoading: boolean = true;
+  error: string | null = null;
+  
+  constructor(private api: TwitterService) {}
 
   ngOnInit() {
-    this.getTwitterTimeline();
-    this.pictureDarkUrl = '/assets/Twitter_Logo_Dark.png';
-    this.pictureLightUrl = '/assets/Twitter_Logo_Light.png';
+    this.getXTimeline();
   }
-  getTwitterTimeline(): void {
-    this.api.getTimeline().subscribe(myTimeline => {
-      this.myTimeline = myTimeline;
-      console.log(this.myTimeline);
+  
+  getXTimeline(): void {
+    this.isLoading = true;
+    this.error = null;
+    
+    this.api.getTimeline().subscribe({
+      next: (timeline) => {
+        this.myTimeline = timeline;
+        this.isLoading = false;
+        console.log('X Timeline loaded:', this.myTimeline);
+      },
+      error: (error) => {
+        this.error = 'Failed to load X timeline';
+        this.isLoading = false;
+        console.error('Error loading X timeline:', error);
+      }
     });
+  }
+
+  trackByPostId(_index: number, post: any): string {
+    return post.id;
   }
 }

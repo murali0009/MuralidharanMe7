@@ -18,11 +18,11 @@
       <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
         <ul class="navbar-nav ml-auto flex-nowrap">
           <li class="nav-item">
-            <a href="#" class="nav-link m-2 menu-item nav-active">Home</a>
+            <a href="#" (click)="setActiveTab('home'); $event.preventDefault()" class="nav-link m-2 menu-item" [class.nav-active]="activeTab === 'home'">Home</a>
           </li>
-          <!-- <li class="nav-item">
-            <a href="http://blog.muralidharan.me" class="nav-link m-2 menu-item">Blog</a>
-          </li> -->
+          <li class="nav-item">
+            <a href="#" (click)="setActiveTab('blog'); $event.preventDefault()" class="nav-link m-2 menu-item" [class.nav-active]="activeTab === 'blog'">Blog</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -44,7 +44,8 @@
       </div>
     </div>
 
-    <div class="container">
+    <!-- Home Tab Content -->
+    <div *ngIf="activeTab === 'home'" class="container">
       <hr />
       <div class="row">
         <div class="col-sm-12 col-md-4 col-lg-4 text-center">
@@ -76,12 +77,119 @@
             </h3>
             <!-- <img class="img-responsive img-full" Height="100px" src="./assets/img/github.png" alt=""> -->
           </a>
-
         </div>
       </div>
       <hr />
+      
+      <!-- GitHub Repositories Section -->
       <div class="col-md-12">
-        <app-twitter-widget></app-twitter-widget>
+        <h3 class="text-center mb-4">
+          <i class="fab fa-github"></i>
+          Recent GitHub Projects
+        </h3>
+        
+        <div *ngIf="repositoriesLoading" class="text-center">
+          <mat-spinner diameter="40"></mat-spinner>
+          <p>Loading repositories...</p>
+        </div>
+        
+        <div *ngIf="!repositoriesLoading" class="github-repos">
+          <div class="row">
+            <div *ngFor="let repo of repositories" class="col-md-6 col-lg-4 mb-4">
+              <div class="github-repo-card">
+                <div class="repo-header">
+                  <h5 class="repo-name">
+                    <i class="fab fa-github"></i>
+                    {{ repo.name }}
+                  </h5>
+                  <div class="repo-stats">
+                    <span class="stat">
+                      <i class="fas fa-star"></i>
+                      {{ repo.stargazers_count }}
+                    </span>
+                    <span class="stat">
+                      <i class="fas fa-code-branch"></i>
+                      {{ repo.forks_count }}
+                    </span>
+                  </div>
+                </div>
+                
+                <p class="repo-description">
+                  {{ repo.description || 'No description available' }}
+                </p>
+                
+                <div class="repo-details">
+                  <span *ngIf="repo.language" class="language">
+                    <i class="fas fa-circle"></i>
+                    {{ repo.language }}
+                  </span>
+                  <span class="updated">
+                    Updated {{ repo.updated_at | date:'MMM d, y' }}
+                  </span>
+                </div>
+                
+                <div class="repo-topics" *ngIf="repo.topics && repo.topics.length > 0">
+                  <span *ngFor="let topic of repo.topics.slice(0, 3)" class="topic">
+                    {{ topic }}
+                  </span>
+                </div>
+                
+                <div class="repo-actions">
+                  <a [href]="repo.html_url" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-sm">
+                    <i class="fas fa-external-link-alt"></i>
+                    View on GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <hr />
+      <div class="col-md-12">
+        <app-x-widget></app-x-widget>
+      </div>
+    </div>
+
+    <!-- Blog Tab Content -->
+    <div *ngIf="activeTab === 'blog'" class="container">
+      <hr />
+      <div class="text-center">
+        <h2>My Blog</h2>
+        <p>Thoughts on software development, IoT, and cloud technologies.</p>
+      </div>
+      
+      <div class="blog-posts" style="max-width: 800px; margin: 0 auto;">
+        <div style="border: 1px solid #ddd; margin-bottom: 20px; padding: 20px; border-radius: 8px;">
+          <h3 style="color: #4e8ef7; margin-bottom: 10px;">Getting Started with Angular 20</h3>
+          <p style="color: #666; font-size: 0.9em; margin-bottom: 10px;">Published on January 15, 2025</p>
+          <p>
+            Angular 20 brings exciting new features and improvements. In this post, I'll walk you through 
+            the key changes and how to get started with the latest version.
+          </p>
+          <button class="btn btn-primary">Read More</button>
+        </div>
+        
+        <div style="border: 1px solid #ddd; margin-bottom: 20px; padding: 20px; border-radius: 8px;">
+          <h3 style="color: #4e8ef7; margin-bottom: 10px;">Building IoT Solutions with .NET Core</h3>
+          <p style="color: #666; font-size: 0.9em; margin-bottom: 10px;">Published on December 20, 2024</p>
+          <p>
+            Exploring how .NET Core can be used to build robust IoT solutions. 
+            From device communication to cloud integration, this post covers it all.
+          </p>
+          <button class="btn btn-primary">Read More</button>
+        </div>
+        
+        <div style="border: 1px solid #ddd; margin-bottom: 20px; padding: 20px; border-radius: 8px;">
+          <h3 style="color: #4e8ef7; margin-bottom: 10px;">Cloud Technologies: Azure vs AWS</h3>
+          <p style="color: #666; font-size: 0.9em; margin-bottom: 10px;">Published on November 10, 2024</p>
+          <p>
+            A comprehensive comparison of Azure and AWS cloud platforms, 
+            focusing on their strengths for different types of applications.
+          </p>
+          <button class="btn btn-primary">Read More</button>
+        </div>
       </div>
     </div>
   </div>

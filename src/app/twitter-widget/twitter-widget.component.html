@@ -1,37 +1,72 @@
-<div *ngIf="undefined === myTimeline">Loading...</div>
-<div *ngIf="undefined !== myTimeline">
-  <div>
+<div class="x-widget-container">
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading-container">
+    <mat-spinner diameter="40"></mat-spinner>
+    <p>Loading X posts...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error && !isLoading" class="error-container">
+    <mat-icon>error</mat-icon>
+    <p>{{ error }}</p>
+    <button mat-button (click)="getXTimeline()">Retry</button>
+  </div>
+
+  <!-- Content -->
+  <div *ngIf="myTimeline && !isLoading && !error">
     <div class="container">
-      <!-- <h3 class="col-md-12">
-          <img height="20" width="20" [src]="dark-theme ? pictureDarkUrl : pictureLightUrl"/>
-      </h3> -->
-      <a
-        href="https://twitter.com/muralidharan10?ref_src=twsrc%5Etfw"
-        class="twitter-follow-button"
-        data-show-count="false"
-        >Follow &#64;muralidharan10</a
-      ><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-      <div class="twitterwidget">
-        <ng-container class="col-md-6" *ngFor="let tweets of myTimeline.data">
-          <mat-card>
-            <mat-card-content>
-              <div mat-card-avatar>
-                <img src="{{ tweets.user.profile_image_url }}"/>
+      <div class="x-header">
+        <h3>
+          <mat-icon>alternate_email</mat-icon>
+          Latest Posts
+        </h3>
+        <a
+          href="https://x.com/muralidharan10"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="x-follow-button"
+          mat-raised-button
+          color="primary"
+        >
+          <mat-icon>person_add</mat-icon>
+          Follow &#64;muralidharan10
+        </a>
+      </div>
+      
+      <div class="x-timeline">
+        <ng-container *ngFor="let post of myTimeline.data; trackBy: trackByPostId">
+          <mat-card class="x-post-card">
+            <mat-card-header>
+              <mat-card-title>{{ post.user.name }}</mat-card-title>
+              <mat-card-subtitle>&#64;{{ post.user.username }}</mat-card-subtitle>
+              <div class="post-date">
+                {{ post.created_at | date:'short' }}
               </div>
-              <div>{{tweets.user.created_at | date}}</div>
-              <h3>{{ tweets.full_text }}</h3>
-              <!-- <div class="row">
-                <div class="col-md-6">
-                  <p>{{ tweets.user.name }}</p>
-                </div>
-                <div class="col-md-6">
-                  <p>{{ tweets.user.location }}</p>
-                </div>
-              </div> -->
-              <!-- <p>{{ tweets.user.description }}</p> -->
+            </mat-card-header>
+            
+            <mat-card-content>
+              <p class="post-text">{{ post.text || post.full_text }}</p>
             </mat-card-content>
+            
+            <mat-card-actions align="end">
+              <a 
+                [href]="'https://x.com/' + post.user.username + '/status/' + post.id"
+                target="_blank"
+                rel="noopener noreferrer"
+                mat-button
+              >
+                <mat-icon>open_in_new</mat-icon>
+                View on X
+              </a>
+            </mat-card-actions>
           </mat-card>
         </ng-container>
+      </div>
+      
+      <div class="x-footer" *ngIf="myTimeline.meta">
+        <p class="post-count">
+          Showing {{ myTimeline.meta.result_count }} recent posts
+        </p>
       </div>
     </div>
   </div>

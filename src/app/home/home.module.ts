@@ -10,6 +10,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 // Import ngx-twitter-timeline
 import { TwitterWidgetComponent } from '@app/twitter-widget/twitter-widget.component';
@@ -25,6 +27,8 @@ import { TwitterWidgetComponent } from '@app/twitter-widget/twitter-widget.compo
     MatCardModule,
     MatToolbarModule,
     MatSlideToggleModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
     OverlayModule
   ],
   declarations: [HomeComponent, TwitterWidgetComponent],
