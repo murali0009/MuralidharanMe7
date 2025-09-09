@@ -45,12 +45,12 @@ export class HttpService {
   }
 
   // Override the original method to wire interceptors when triggering the request.
-  request(method?: any, url?: any, options?: any): any {
+  request(method?: any, url?: any, options?: any): Observable<any> {
     const handler = this.interceptors.reduceRight(
       (next, interceptor) => new HttpInterceptorHandler(next, interceptor),
       this.httpHandler
     );
-    return this.HttpClient;
+    return new HttpClient(handler).request(method, url, options);
   }
 
   private removeInterceptor(interceptorType: Function): HttpService {
